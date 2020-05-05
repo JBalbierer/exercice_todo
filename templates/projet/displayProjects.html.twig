@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Projets</title>
+        <meta charset="UTF-8">
+        {% block stylesheets %}
+            <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="row centrer">
+            <h1>Projets</h1>
+            <p>Vous avez {{ projets|length }} projets en cours.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <table class="table">
+                    <thead>
+                        <th scope="col">Numéro</th>
+                        <th scope="col">Nom</th>
+                    </thead>
+                    <tbody>
+                        {% for item in projets %}
+                            <tr>
+                                <th scope="row">{{item.getId}}</th>
+                                <td><a href="{{path('afficherTodosPourUnProjet', {ProjetId: item.getId})}}">{{item.getProjetNom}}</a> </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-3">
+            </div> 
+        </div>
+        <div class="row centrer">
+            <p>
+                <a class="boutton" href="{{path('creerProjet')}}">Ajouter un projet</a>
+            </p>
+        </div>
+    </body>
+</html>

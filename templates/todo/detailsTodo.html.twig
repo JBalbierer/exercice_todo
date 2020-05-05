@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Todoliste</title>
+        <meta charset="UTF-8">
+        {% block stylesheets %}
+            <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="row centrer">
+            <h1>{{todo.getTodoTitre}}</h1>
+            <p>{{ todo.getTodoDescription }}</p>
+        </div>
+        <div class="row centrer">
+            <p>
+                <a class="boutton" href="{{path('afficherTodosPourUnProjet', {ProjetId: todo.getProjetId})}}">Retour</a>
+            </p>
+        </div>
+    </body>
+</html>

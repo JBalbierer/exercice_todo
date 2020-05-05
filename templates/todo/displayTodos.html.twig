@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Projet n°{{ProjetId}}</title>
+        <meta charset="UTF-8">
+        {% block stylesheets %}
+            <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="row centrer">
+            <h1>Projet n°{{ProjetId}}</h1>
+            <p>Vous avez {{ todos|length }} tâches en cours. Le mot le plus utilisé est "{{Mot}}". </p>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+                    <caption class="caption">Todolist</caption>
+                    <thead>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Date limite</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </thead>
+                    {% for item in todos %}
+                        <tr>
+                            <td>{{item.getTodoTitre}}</td>
+                            <td>{{item.getTodoDateLimite|date("m/d/Y")}}</td>
+                            <td><a href="{{path('afficherUnTodo', {ProjetId: item.getProjetId, TodoId: item.getId})}}">Détails</a></td>
+                            <td><a href="{{path('supprimerTodo', {ProjetId: item.getProjetId, TodoId: item.getId})}}">Supprimer</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-3">
+            </div> 
+        </div>
+
+        <div class="row centrer">
+            <p>
+                <a class="boutton" href="{{path('ajouterTodo', {ProjetId: ProjetId})}}">Ajouter une tâche</a>
+                <a class="boutton" href="{{path('supprimerProjet', {ProjetId: ProjetId})}}">Supprimer ce projet</a></td>
+                <a class="boutton" href="{{path('afficherProjets')}}">Retour</a>
+            </p>
+        </div>
+    </body>
+</html>

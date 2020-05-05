@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Todolist </title>
+        <meta charset="UTF-8">
+        {% block stylesheets %}
+            <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="row">
+            <h1 class="centrer">Ajouter une tâche</h1>
+        </div>
+        <div class="well">
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_row(form._token) }}
+
+            {{ form_row(form.Todo_titre, {'label': 'Résumé: '}) }}  
+            {{ form_row(form.Todo_description, {'label': 'Description détaillée: '}) }} 
+            {{ form_row(form.Todo_dateLimite, {'label': 'Echéance: '}) }} 
+            {{ form_row(form.Projet_id, {'label': 'Projet n°'}) }} 
+            {{ form_row(form.save, {'label': 'Enregistrer'}) }}
+            {{form_end(form)}}
+        </div>
+        <p>
+            <a class="boutton" href="{{path('afficherProjets')}}">Retour</a>
+        </p>
+    </body>
+</html>

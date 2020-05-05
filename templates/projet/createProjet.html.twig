@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Créer un projet</title>
+        <meta charset="UTF-8">
+        {% block stylesheets %}
+            <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="centrer">
+            <h1>Créer un projet</h1>
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_row(form._token) }}
+            {{ form_row(form.Projet_nom, {'label': 'Nom du projet: '}) }}
+            <p>  
+                {{ form_row(form.save, {'label': 'Enregistrer'}) }}
+            </p>
+            {{form_end(form)}}
+            <p>
+                <a class="boutton" href="{{path('afficherProjets')}}">Retour</a>
+            </p>
+        </div>
+    </body>
+</html>
