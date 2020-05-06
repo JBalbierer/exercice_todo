@@ -47,19 +47,6 @@ class ProjetController extends AbstractController
         return $this->render('projet/displayProjects.html.twig', ['projets' => $projets]);
     }  
 
-    /**
-     * @Route("/projets/{ProjetId}", name="afficherUnProjet")
-    */ 
-    public function afficherUnProjet(ProjetRepository $ProjetRepository, $ProjetId)
-    {
-        $projet = $ProjetRepository->find($ProjetId);
-        
-        $projetNom = $projet->getProjetNom();
-        $projetId = $projet->getId();
-
-        return $this->render('projet/details.html.twig', ['projetNom' => $projetNom, 'projetId' => $projetId]); 
-    }
-
     
     /**
      *@Route("/projets/{ProjetId}/supprimerProjet", name="supprimerProjet")
